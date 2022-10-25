@@ -13,7 +13,28 @@
 
 <body>
     <header class="header"></header>
-    <main class="main"></main>
+    <main class="main">
+
+        <!-- Ильвина начало -->
+
+        <image src="" id="image"></img>
+
+            <div class="search-form">
+                <input required type="text" name="search" class="search-form__input" id="searchInput"
+                    placeholder="Search recipes...">
+
+                <select required class="search-form__list" id="selectList">
+                    <option value="cocktail-name">Search cocktail by name</option>
+                    <option value="cocktail-ingredient">Search cocktail by ingredient</option>
+                    <option value="ingredient-name">Search ingredient by name</option>
+                </select>
+
+                <button type="button" class="search-form__button" id="searchButton">Search</button>
+            </div>
+            <!-- Ильвина конец -->
+
+    </main>
+
     <footer class="footer"></footer>
 
     <script src="src/script/index.js"></script>
