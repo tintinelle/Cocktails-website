@@ -1,0 +1,30 @@
+.search-form {
+
+    display: flex;
+    justify-content: center;
+
+    width: 60%;
+    margin-left: 20%;
+    padding: 20px 10px;
+
+    border: 1px solid yellow;
+
+    background-color: $background-color;
+
+    &__input {
+    }
+
+    // .search-form__list
+
+    &__list {
+    }
+
+    // .search-form__button
+
+    &__button {
+    }
+
+    &__error-message {
+    }
+}
+

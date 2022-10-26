@@ -1,43 +1,53 @@
+@charset "UTF-8";
+.search-form {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin-left: 20%;
+  padding: 20px 10px;
+  border: 1px solid yellow;
+  background-color: black;
+}
 /* Саша начало */
-
 body {
-    background-color: #efefef;
-    height: 100%;
+  background-color: #efefef;
+  height: 100%;
 }
 
 .flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
 }
 
 .card {
-    position: relative;
-    padding: 30px;
-    width: 300px;
-    background-color: #fff;
-    margin: 10px;
-    overflow: visible;
+  position: relative;
+  padding: 30px;
+  width: 300px;
+  background-color: #fff;
+  margin: 10px;
+  overflow: visible;
 }
 
 img {
-    display: inline-block;
-    max-width: 100%;
-    object-fit: cover;
+  display: inline-block;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #recipe {
-    position: absolute;
-    display: none;
+  position: absolute;
+  display: none;
 }
 
 .card:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .card:hover #recipe {
-    display: block;
+  display: block;
 }
 
-/* Саша конец */
+/* Саша конец *//*# sourceMappingURL=style.css.map */
