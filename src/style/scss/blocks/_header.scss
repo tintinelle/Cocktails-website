@@ -3,7 +3,7 @@ ol, ul {
 
 .nav {
     margin: 0 auto;
-    background-color: $main-color;
+    background-color: $background-color;
 
     &-menu {
         @include container;
