@@ -1,6 +1,6 @@
 ol, ul {
     list-style: none; }
-    
+
 .nav {
     margin: 0 auto;
     background-color: $main-color;
@@ -27,4 +27,13 @@ ol, ul {
             color: $yellow-color;
         }
     } 
+}
+.banner {
+
+    &_container {
+        background: url(/src/images/selection-of-various-cocktails-on-the-table.jpg);
+        background-size: cover;
+        min-height: 70vh;
+    
+    }
 }
