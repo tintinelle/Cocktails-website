@@ -1,4 +1,6 @@
 @import "scss/fonts"; //Шрифты
 @import "scss/vars"; //Переменные
 @import "scss/mixins"; //Миксины 
-@import "scss/header"; //
+
+@import "scss/blocks/search-form"; //Форма поиска Ильвина 
+@import "scss/blocks/cocktails-cards"; //Карточки с коктейлями Саша

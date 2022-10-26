@@ -31,33 +31,56 @@
         <!-- /Пати конец -->
     </header>
     <main class="main">
-<!-- Саша начало -->
-<div class="wrapper">
-    <div class="flex">
-        <div class="card">
-            <img src="" id="image">
-            <h2 id="name"></h2>
-            <p id="indredients"></p>
-            <div id="recipe"></div>
+
+        <!-- Ильвина начало -->
+        <!-- 
+        <image src="" id="image"></img> -->
+
+        <div class="search-form">
+            <input required type="text" name="search" class="search-form__input" id="searchInput"
+                placeholder="Search recipes...">
+
+            <select required class="search-form__list" id="selectList">
+                <option value="cocktail-name">Search cocktail by name</option>
+                <option value="cocktail-ingredient">Search cocktail by ingredient</option>
+                <option value="ingredient-name">Search ingredient by name</option>
+            </select>
+
+            <button type="button" class="search-form__button" id="searchButton">Search</button>
+
+            <div class="error-message" id="errorMessage"></div>
         </div>
+        <!-- Ильвина конец -->
 
-        <div class="card">
-            <img src="" id="image">
-            <h2 id="name"></h2>
-            <p id="indredients"></p>
+    </main>
+
+    <!-- Саша начало -->
+    <div class="wrapper">
+        <div class="flex">
+            <div class="card">
+                <img src="" id="image">
+                <h2 id="name"></h2>
+                <p id="indredients"></p>
+                <div id="recipe"></div>
+            </div>
+
+            <div class="card">
+                <img src="" id="image">
+                <h2 id="name"></h2>
+                <p id="indredients"></p>
+            </div>
+
+
+            <div class="card">
+                <img src="" id="image">
+                <h2 id="name"></h2>
+                <p id="indredients"></p>
+            </div>
+
+
         </div>
-
-
-        <div class="card">
-            <img src="" id="image">
-            <h2 id="name"></h2>
-            <p id="indredients"></p>
-        </div>
-
-
     </div>
-</div>
-<!-- Саша конец -->
+    <!-- Саша конец -->
 
     </main>
     <footer class="footer">
