@@ -1,0 +1,30 @@
+ol, ul {
+    list-style: none; }
+    
+.nav {
+    margin: 0 auto;
+    background-color: $main-color;
+
+    &-menu {
+        @include container;
+        display: flex;
+        flex-wrap: wrap;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+    &-link { 
+        display: block;
+        padding: 24px 0;
+        text-decoration: none;
+        color: white;
+        transition: color .2s ease;
+
+        &:hover {
+            color: $yellow-color;
+        }
+    } 
+}
