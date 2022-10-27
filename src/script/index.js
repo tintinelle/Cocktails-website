@@ -95,3 +95,21 @@ document.addEventListener("DOMContentLoaded",
             .catch(error => console.log(error));
     })
 // Саша конец
+
+//Пати начало
+// Поиск случайного коктейля
+document.addEventListener("DOMContentLoaded",
+    function (event) {
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.').src = data.drinks[0].strDrinkThumb;
+
+            })
+    })
+// const searchRandomCocktail = (randomCocktail) => {
+//     errorMessage.innerHTML = '';
+
+//}
+
+//Пати конец
