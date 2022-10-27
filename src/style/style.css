@@ -1,12 +1,23 @@
 @charset "UTF-8";
 .search-form {
+  background: url(/src/images/selection2-of-various-cocktails-on-the-table.jpg);
+  background-size: 100%;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
-  width: 60%;
-  margin-left: 20%;
   padding: 20px 10px;
-  border: 1px solid yellow;
-  background-color: black;
+}
+.search-form__input {
+  width: 40%;
+  height: 50px;
+}
+.search-form__list {
+  width: 20%;
+  height: 50px;
+}
+.search-form__button {
+  width: 10%;
+  height: 50px;
 }
 /* Саша начало */
 body {
@@ -24,7 +35,6 @@ body {
 .card {
   position: relative;
   padding: 30px;
-  height: 400px;
   width: 300px;
   background-color: #fff;
   margin: 10px;
@@ -44,12 +54,42 @@ img {
 }
 
 .card:hover {
-     /* transform: scale(1.2); */
-    height: 520px;
+  transform: scale(1.2);
 }
 
 .card:hover #recipe {
   display: block;
 }
 
-/* Саша конец *//*# sourceMappingURL=style.css.map */
+/* Саша конец */
+ol, ul {
+  list-style: none;
+}
+
+.nav {
+  margin: 0 auto;
+  background-color: black;
+}
+.nav-menu {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.nav-link {
+  display: block;
+  padding: 24px 0;
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: #FFE70D;
+}/*# sourceMappingURL=style.css.map */
