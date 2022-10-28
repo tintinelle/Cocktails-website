@@ -1,38 +1,46 @@
 .search-form {
-
-    background: url(/src/images/selection2-of-various-cocktails-on-the-table.jpg);
-    background-size: 100%;
-    min-height: 50vh;
-
     display: flex;
     justify-content: center;
 
-    // width: 60%;
-    // margin-left: 20%;
+    border-top: 1px solid $yellow-color;
+
     padding: 20px 10px;
+    margin: 70px;
 
-    // border: 1px solid yellow;
+    // .search-form__item
 
-    &__input {
-        width: 40%;
-        height: 50px;
-    }
+    &__item {
+        background-color: $background-color;
+        border: 1px solid white;
+        color: white;
 
-    // .search-form__list
+        font-size: 1.3em;
 
-    &__list {
-        width: 20%;
-        height: 50px;
-    }
+        &:hover {
+            color: black;
+        }
+        // .search-form__item_input
 
-    // .search-form__button
+        &_input {
+            width: 40%;
+            min-height: 3.5rem;
+        }
 
-    &__button {
-        width: 10%;
-        height: 50px;
-    }
+        // .search-form__item_list
 
-    &__error-message {
+        &_list {
+            width: 20%;
+        }
+
+        // .search-form__item_button
+
+        &_button {
+            width: 10%;
+        }
+
+        // .search-form__item_error-message
+
+        &_error-message {
+        }
     }
 }
-

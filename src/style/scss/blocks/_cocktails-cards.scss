@@ -15,6 +15,7 @@ body {
 .card {
     position: relative;
     padding: 30px;
+    height: 500px;
     width: 300px;
     background-color: #fff;
     margin: 10px;
@@ -27,17 +28,35 @@ img {
     object-fit: cover;
 }
 
+#glass {
+    // position: absolute;
+    display: none;
+}
+
 #recipe {
-    position: absolute;
+    // position: absolute;
     display: none;
 }
 
 .card:hover {
-    transform: scale(1.2);
+    // transform: scale(1.2);
+    height: 520px;
 }
 
+.card:hover #glass {
+    display: block;
+}
 .card:hover #recipe {
     display: block;
 }
 
+
 /* Саша конец */
+
+// Ильвина начало
+.ingredient-card {
+    width: 60%;
+    padding: 40px;
+    background-color: white;
+}
+// Ильвина конец

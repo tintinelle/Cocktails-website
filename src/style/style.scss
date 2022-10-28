@@ -5,4 +5,7 @@
 @import "scss/blocks/search-form"; //Форма поиска Ильвина 
 @import "scss/blocks/cocktails-cards"; //Карточки с коктейлями Саша
 @import "scss/blocks/header"; //Баннер и хедер Пати
-@import "scss/blocks/random"; //Карточки в случайном порядке Пати
+
+body {
+    background-color: $background-color;
+}

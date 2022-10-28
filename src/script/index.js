@@ -6,6 +6,7 @@ const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const selectList = document.getElementById('selectList');
 const errorMessage = document.getElementById('errorMessage');
+const cardsContainer = document.getElementById('cardsContainer');
 
 
 // ищем коктейль по названию
@@ -31,23 +32,45 @@ const searchCocktailByIngredient = (cocktail) => {
     errorMessage.innerHTML = '';
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktail}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // так как при поиске коктейля по ингредиенту сервер выдает лишь название и фото, отправляем искать коктейль по названию, а уже оттуда отправляем на отрисовку:
-        searchCocktailByName(data.drinks[0].strDrink);
-    })
-    .catch(err => {
-        console.log(err)
-        errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // так как при поиске коктейля по ингредиенту сервер выдает лишь название и фото, отправляем искать коктейль по названию, а уже оттуда отправляем на отрисовку:
+            searchCocktailByName(data.drinks[0].strDrink);
+        })
+        .catch(err => {
+            console.log(err)
+            errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
+        });
 }
 
 // отрисовываем карточку с ингредиентом
-const displayIngredient = (data) => {
-    document.getElementById('image').src =  `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
-    document.getElementById("name").innerText = data.ingredients[0].strIngredient;
-    document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
+const displayIngredient = (div, url, name, alco, abv, about) => {
+    div.innerHTML = '';
+    const wrap = document.createElement('div');
+    const picture = document.createElement('img');
+    const ingredientName = document.createElement('h2');
+    const alcoholic = document.createElement('p');
+    const degree = document.createElement('p');
+    const description = document.createElement('div');
+
+    wrap.className = 'ingredient-card';
+    picture.src = url;
+    ingredientName.textContent = name;
+    alcoholic.textContent = `Alcoholic: ${alco}`;
+    degree.textContent = `Alcohol by volume: ${abv}`;
+    description.textContent = about;
+
+    div.append(wrap);
+    wrap.append(picture);
+    wrap.append(ingredientName);
+    wrap.append(alcoholic);
+    wrap.append(degree);
+    wrap.append(description);
+
+    // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
+    // document.getElementById("name").innerText = data.ingredients[0].strIngredient;
+    // document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
 }
 
 // ищем ингредиент по названию
@@ -55,16 +78,15 @@ const searchIngredientByName = (ingredientName) => {
     errorMessage.innerHTML = '';
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredientName}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        displayIngredient(data);
-        // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${ingredientName}-Medium.png`;
-    })
-    .catch(err => {
-        console.log(err)
-        errorMessage.innerHTML = 'Failed to find an ingredient. Please try another word.'
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            displayIngredient(cardsContainer, `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`, data.ingredients[0].strIngredient, data.ingredients[0].strAlcohol, data.ingredients[0].strABV, data.ingredients[0].strDescription);
+        })
+        .catch(err => {
+            console.log(err)
+            errorMessage.innerHTML = 'Failed to find an ingredient. Please try another word.'
+        });
 }
 
 // действия при нажатии на кнопку поиска
@@ -84,50 +106,28 @@ searchButton.addEventListener('click', () => {
     }
 })
 
+
+
 // Ильвина конец
 
 // Саша начало
 
 const displayCocktails = (data) => {
-    document.getElementById('image').src = data.drinks[0].strDrinkThumb;
-    document.getElementById("name").innerText = data.drinks[0].strDrink;
-    document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-    document.getElementById("recipe").innerText = data.drinks[0].strInstructions;
+    for (let i = 0; i < 5; i++) {
+        document.getElementById('image').src = data.drinks[i].strDrinkThumb;
+        document.getElementById("name").innerText = data.drinks[i].strDrink;
+        document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
+        document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
+        document.getElementById("alcoholic").innerText = "Type: " + data.drinks[i].strAlcoholic;
+        document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
+        // document.getElementById("recipe").innerText = "Instructions: " + data.drinks[i].strInstructions;
+
+        let Instruction = data.drinks[0].strInstructions;
+        let Instrsplit = Instruction.split('.');
+        console.log(Instrsplit);
+        for (let i = 0; i < Instrsplit.length; i++) {
+            document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
+        }
+    }
 }
-
 // Саша конец
-
-//Пати начало
-// Поиск случайного коктейля
-document.addEventListener("DOMContentLoaded",
-    function (event) {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
-                document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
-                document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-                document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
-            })
-            .catch(err => {
-                console.log(err)
-                errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
-            });
-    })
-
-//Обновление блока случайных коктейлей (пока не знаю как реализовать)
-// async function updateList() {
-//     try {
-//         const html = await (await fetch(location.src)).text();
-//         const newList = new DOMParser().parseFromString(html, 'text/html');
-//         document.querySelector('.random').outerHTML = newList.querySelector('.random').outerHTML;
-//         console.log('.random');
-//         return true;
-//     } catch(err) {
-//         console.error(err);
-//         return false;
-//     }
-// }
-document.querySelector('#update').addEventListener('click', updateList)
-//Пати конец
