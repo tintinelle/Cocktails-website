@@ -15,7 +15,7 @@ body {
 .card {
     position: relative;
     padding: 30px;
-    height: 400px;
+    height: 500px;
     width: 300px;
     background-color: #fff;
     margin: 10px;
@@ -28,8 +28,13 @@ img {
     object-fit: cover;
 }
 
+#glass {
+    // position: absolute;
+    display: none;
+}
+
 #recipe {
-    position: absolute;
+    // position: absolute;
     display: none;
 }
 
@@ -38,6 +43,9 @@ img {
     height: 520px;
 }
 
+.card:hover #glass {
+    display: block;
+}
 .card:hover #recipe {
     display: block;
 }
