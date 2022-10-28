@@ -104,13 +104,30 @@ document.addEventListener("DOMContentLoaded",
         fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
             .then(response => response.json())
             .then(data => {
-                document.querySelector('.').src = data.drinks[0].strDrinkThumb;
-
+                console.log(data);
+                document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
+                document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
+                document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
+                document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
             })
+            .catch(err => {
+                console.log(err)
+                errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
+            });
     })
-// const searchRandomCocktail = (randomCocktail) => {
-//     errorMessage.innerHTML = '';
 
-//}
-
+//Обновление блока случайных коктейлей (пока не знаю как реализовать)
+// async function updateList() {
+//     try {
+//         const html = await (await fetch(location.src)).text();
+//         const newList = new DOMParser().parseFromString(html, 'text/html');
+//         document.querySelector('.random').outerHTML = newList.querySelector('.random').outerHTML;
+//         console.log('.random');
+//         return true;
+//     } catch(err) {
+//         console.error(err);
+//         return false;
+//     }
+// }
+document.querySelector('#update').addEventListener('click', updateList)
 //Пати конец
