@@ -1,0 +1,36 @@
+.random-cards {
+    text-align: center;
+}
+.random {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+
+    &-card {
+        position: relative;
+        padding: 30px;
+        width: 300px;
+        background-color: #fff;
+        margin: 10px;
+        overflow: visible;
+
+        &_image {
+            display: inline-block;
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        &_recipe {
+            position: absolute;
+            display: none;
+        }
+    }
+    &-card:hover {
+        transform: scale(1.2);
+    }
+    
+    &-card:hover #recipe {
+        display: block;
+    }
+}
