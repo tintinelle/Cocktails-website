@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/images/icon.png" type="png">
     <link rel="stylesheet" href="src/style/normalize.css">
     <link rel="stylesheet" href="src/style/style.css">
     <!-- <link rel="stylesheet" href="src/css/style.css"> -->
@@ -36,18 +37,18 @@
         <!-- <image src="" id="image"></img> -->
 
         <div class="search-form">
-            <input type="text" name="search" class="search-form__input" id="searchInput"
+            <input type="text" name="search" class="search-form__item search-form__item_input" id="searchInput"
                 placeholder="Search recipes...">
 
-            <select class="search-form__list" id="selectList">
-                <option value="cocktail-name">Search cocktails by name</option>
-                <option value="cocktail-ingredient">Search cocktails by ingredient</option>
-                <option value="ingredient-name">Search ingredients by name</option>
+            <select class="search-form__item search-form__item_list" id="selectList">
+                <option value="cocktail-name">Cocktails by name</option>
+                <option value="cocktail-ingredient">Cocktails by ingredient</option>
+                <option value="ingredient-name">Ingredients by name</option>
             </select>
 
-            <button type="button" class="search-form__button" id="searchButton">Search</button>
+            <button type="button" class="search-form__item search-form__item_button" id="searchButton">Search</button>
 
-            <div class="search-form__error-message" id="errorMessage"></div>
+            <div class="search-form__item search-form__item_error-message" id="errorMessage"></div>
         </div>
         <!-- Ильвина конец -->
 
@@ -55,7 +56,7 @@
 
     <!-- Саша начало -->
     <div class="wrapper">
-        <div class="flex">
+        <div class="flex" id="cardsContainer">
             <div class="card">
                 <img src="" id="image">
                 <h2 id="name"></h2>
@@ -65,7 +66,7 @@
                 <div id="recipe"></div>
             </div>
 
-            <!-- <div class="card">
+            <div class="card">
                 <img src="" id="image">
                 <h2 id="name"></h2>
                 <p id="indredients"></p>
@@ -76,7 +77,7 @@
                 <img src="" id="image">
                 <h2 id="name"></h2>
                 <p id="indredients"></p>
-            </div> -->
+            </div>
 
 
         </div>
