@@ -6,6 +6,7 @@ const searchButton = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchInput');
 const selectList = document.getElementById('selectList');
 const errorMessage = document.getElementById('errorMessage');
+const cardsContainer = document.getElementById('cardsContainer');
 
 
 // ищем коктейль по названию
@@ -44,10 +45,32 @@ const searchCocktailByIngredient = (cocktail) => {
 }
 
 // отрисовываем карточку с ингредиентом
-const displayIngredient = (data) => {
-    document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
-    document.getElementById("name").innerText = data.ingredients[0].strIngredient;
-    document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
+const displayIngredient = (div, url, name, alco, abv, about) => {
+    div.innerHTML = '';
+    const wrap = document.createElement('div');
+    const picture = document.createElement('img');
+    const ingredientName = document.createElement('h2');
+    const alcoholic = document.createElement('p');
+    const degree = document.createElement('p');
+    const description = document.createElement('div');
+
+    wrap.className = 'ingredient-card';
+    picture.src = url;
+    ingredientName.textContent = name;
+    alcoholic.textContent = `Alcoholic: ${alco}`;
+    degree.textContent = `Alcohol by volume: ${abv}`;
+    description.textContent = about;
+
+    div.append(wrap);
+    wrap.append(picture);
+    wrap.append(ingredientName);
+    wrap.append(alcoholic);
+    wrap.append(degree);
+    wrap.append(description);
+
+    // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
+    // document.getElementById("name").innerText = data.ingredients[0].strIngredient;
+    // document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
 }
 
 // ищем ингредиент по названию
@@ -58,8 +81,7 @@ const searchIngredientByName = (ingredientName) => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            displayIngredient(data);
-            // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${ingredientName}-Medium.png`;
+            displayIngredient(cardsContainer, `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`, data.ingredients[0].strIngredient, data.ingredients[0].strAlcohol, data.ingredients[0].strABV, data.ingredients[0].strDescription);
         })
         .catch(err => {
             console.log(err)
@@ -84,10 +106,11 @@ searchButton.addEventListener('click', () => {
     }
 })
 
+
+
 // Ильвина конец
 
 // Саша начало
-
 
 const displayCocktails = (data) => {
     for (let i = 0; i < 5; i++) {
@@ -105,7 +128,6 @@ const displayCocktails = (data) => {
         for (let i = 0; i < Instrsplit.length; i++) {
             document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
         }
-       
     }
 }
 // Саша конец
