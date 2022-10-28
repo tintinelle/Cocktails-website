@@ -95,6 +95,9 @@ const displayCocktails = (data) => {
     document.getElementById("name").innerText = data.drinks[i].strDrink;
     document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
     document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
+    document.getElementById("alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+    document.getElementById("glass").innerText = "Glass: " + data.drinks[0].strGlass;
+    document.getElementById("recipe").innerText = "Instructions: " + data.drinks[0].strInstructions;
 }
 }
 // Саша конец
