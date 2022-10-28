@@ -88,11 +88,13 @@ searchButton.addEventListener('click', () => {
 
 // Саша начало
 
-const displayCocktails = (data) => {
-    document.getElementById('image').src = data.drinks[0].strDrinkThumb;
-    document.getElementById("name").innerText = data.drinks[0].strDrink;
-    document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-    document.getElementById("recipe").innerText = data.drinks[0].strInstructions;
-}
 
+const displayCocktails = (data) => {
+    for (let i=0; i<5; i++) {
+    document.getElementById('image').src = data.drinks[i].strDrinkThumb;
+    document.getElementById("name").innerText = data.drinks[i].strDrink;
+    document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
+    document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
+}
+}
 // Саша конец
