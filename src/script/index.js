@@ -7,20 +7,18 @@ const searchInput = document.getElementById('searchInput');
 const selectList = document.getElementById('selectList');
 const errorMessage = document.getElementById('errorMessage');
 
+
 // ищем коктейль по названию
 const searchCocktailByName = (cocktailName) => {
     errorMessage.innerHTML = '';
-    // console.log(cocktailName);
 
     const cocktailNameFiltered = cocktailName.trim().split(" ")[0];
-    // console.log(cocktailNameFiltered);
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailNameFiltered}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-
-            document.getElementById('image').src = data.drinks[0].strDrinkThumb;
+            displayCocktails(data);
         })
         .catch(err => {
             console.log(err)
@@ -36,13 +34,20 @@ const searchCocktailByIngredient = (cocktail) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-
-        document.getElementById('image').src = data.drinks[0].strDrinkThumb;
+        // так как при поиске коктейля по ингредиенту сервер выдает лишь название и фото, отправляем искать коктейль по названию, а уже оттуда отправляем на отрисовку:
+        searchCocktailByName(data.drinks[0].strDrink);
     })
     .catch(err => {
         console.log(err)
         errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
     });
+}
+
+// отрисовываем карточку с ингредиентом
+const displayIngredient = (data) => {
+    document.getElementById('image').src =  `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
+    document.getElementById("name").innerText = data.ingredients[0].strIngredient;
+    document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
 }
 
 // ищем ингредиент по названию
@@ -53,8 +58,8 @@ const searchIngredientByName = (ingredientName) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-
-        document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${ingredientName}-Medium.png`;
+        displayIngredient(data);
+        // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${ingredientName}-Medium.png`;
     })
     .catch(err => {
         console.log(err)
@@ -78,20 +83,18 @@ searchButton.addEventListener('click', () => {
         searchIngredientByName(searchInput.value);
     }
 })
+
 // Ильвина конец
 
 // Саша начало
 
-document.addEventListener("DOMContentLoaded",
-    function (event) {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('image').src = data.drinks[0].strDrinkThumb;
-                document.getElementById("name").innerText = data.drinks[0].strDrink;
-                document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-                document.getElementById("recipe").innerText = data.drinks[0].strInstructions;
-            })
-            .catch(error => console.log(error));
-    })
+
+const displayCocktails = (data) => {
+    for (let i=0; i<5; i++) {
+    document.getElementById('image').src = data.drinks[i].strDrinkThumb;
+    document.getElementById("name").innerText = data.drinks[i].strDrink;
+    document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
+    document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
+}
+}
 // Саша конец
