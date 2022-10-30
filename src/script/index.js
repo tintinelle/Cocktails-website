@@ -8,7 +8,6 @@ const selectList = document.getElementById('selectList');
 const errorMessage = document.getElementById('errorMessage');
 const cardsContainer = document.getElementById('cardsContainer');
 
-
 // ищем коктейль по названию
 const searchCocktailByName = (cocktailName) => {
     errorMessage.innerHTML = '';
