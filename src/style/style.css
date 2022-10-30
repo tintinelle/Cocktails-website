@@ -1,26 +1,52 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.main__title {
+  font-weight: 500;
+}
+
+.ingredient-card {
+  font-size: 1.2em;
+}
+
+.main__top-background {
+  min-height: 13rem;
+  background: url("../images/32000-ffffff.svg") center/70% no-repeat;
+}
+
+.main__title {
+  color: white;
+  text-align: center;
+}
+
 .search-form {
   display: flex;
   justify-content: center;
-  border-top: 1px solid #FFE70D;
   padding: 20px 10px;
-  margin: 70px;
 }
 .search-form__item {
   background-color: #282828;
   border: 1px solid white;
-  color: white;
+  color: gray;
   font-size: 1.3em;
 }
 .search-form__item:hover {
-  color: black;
+  border: 1px solid #FFE70D;
 }
 .search-form__item_input {
   width: 40%;
   min-height: 3.5rem;
+  padding-left: 10px;
 }
 .search-form__item_list {
   width: 20%;
+  text-align: center;
+}
+.search-form__item_list option {
+  background-color: #282828;
 }
 .search-form__item_button {
   width: 10%;
@@ -77,9 +103,10 @@ img {
 
 /* Саша конец */
 .ingredient-card {
-  width: 60%;
+  width: 40%;
   padding: 40px;
   background-color: white;
+  text-align: center;
 }
 
 ol, ul {
@@ -115,5 +142,5 @@ ol, ul {
 }
 
 body {
-  background-color: #282828;
+  background: linear-gradient(0deg, #151313 10%, #282828 50%, #151313 90%);
 }/*# sourceMappingURL=style.css.map */
