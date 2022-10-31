@@ -145,8 +145,6 @@ document.addEventListener("DOMContentLoaded",
                 document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
                 document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
                 document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-                document.getElementById("random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-                document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
             })
             .catch(err => {
                 console.log(err)
