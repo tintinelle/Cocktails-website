@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+//Основной шрифт - Red Hat Display 300 
+$main-font: 'Red Hat Display', sans-serif;
+
+
+// Ильвина шрифты
+
+body {
+    font-family: $main-font;
+}
+
+.main__title {
+    font-weight: 500;
+}
+
+.ingredient-card {
+    font-size: 1.2em;
+}
+
+

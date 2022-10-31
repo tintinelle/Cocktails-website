@@ -1,44 +1,48 @@
+.main__top-background {
+    min-height: 13rem;
+
+    background: url('../images/32000-ffffff.svg') center / 70% no-repeat;
+}
+
+.main__title {
+    color: white;
+    text-align: center;
+}
+
 .search-form {
     display: flex;
     justify-content: center;
-
-    border-top: 1px solid $yellow-color;
-
     padding: 20px 10px;
-    margin: 70px;
-
-    // .search-form__item
 
     &__item {
         background-color: $background-color;
         border: 1px solid white;
-        color: white;
+        color: gray;
 
         font-size: 1.3em;
 
         &:hover {
-            color: black;
+            border: 1px solid $yellow-color;
         }
         // .search-form__item_input
 
         &_input {
             width: 40%;
             min-height: 3.5rem;
+            padding-left: 10px;
         }
-
-        // .search-form__item_list
 
         &_list {
             width: 20%;
+            text-align: center;
+            & option {
+                background-color: $background-color ;
+            }
         }
-
-        // .search-form__item_button
 
         &_button {
             width: 10%;
         }
-
-        // .search-form__item_error-message
 
         &_error-message {
         }
