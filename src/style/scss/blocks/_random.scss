@@ -1,5 +1,9 @@
 .random-cards {
     text-align: center;
+
+    h1 {
+        color: white;
+    }
 }
 .random {
     display: flex;
@@ -10,7 +14,8 @@
     &-card {
         position: relative;
         padding: 30px;
-        width: 300px;
+        height: 400px;
+        width: 30%;
         background-color: #fff;
         margin: 10px;
         overflow: visible;
@@ -21,16 +26,12 @@
             object-fit: cover;
         }
 
-        &_recipe {
-            position: absolute;
-            display: none;
+        // &_recipe {
+        //     display: block;
+        // }
+
+        &:hover {
+            height: 405px;
         }
-    }
-    &-card:hover {
-        transform: scale(1.2);
-    }
-    
-    &-card:hover #recipe {
-        display: block;
     }
 }
