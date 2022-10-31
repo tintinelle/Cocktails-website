@@ -164,10 +164,10 @@ const displayCocktails = (div, data) => {
 
 
 //Пати начало
-// Поиск случайного коктейля
+// Отрисовка случайного коктейля
 document.addEventListener("DOMContentLoaded",
     function (event) {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then(response => response.json())
             .then(data => {
                 // console.log(data);
@@ -175,6 +175,10 @@ document.addEventListener("DOMContentLoaded",
                 document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
                 document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
                 document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
+                document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+                document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
+                document.getElementById("random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+                document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
             })
             .catch(err => {
                 console.log(err)
