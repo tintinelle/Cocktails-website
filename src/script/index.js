@@ -127,7 +127,7 @@ const displayCocktails = (data) => {
         for (let i = 0; i < Instrsplit.length; i++) {
             document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
         }
-    }
+}
 }
 // Саша конец
 //Пати начало
