@@ -44,7 +44,7 @@ const searchCocktailByIngredient = (cocktail) => {
 }
 
 // отрисовываем карточку с ингредиентом
-const displayIngredient = (div, url, name, alco, abv, about) => {
+const displayIngredient = (div, data) => {
     div.innerHTML = '';
     const wrap = document.createElement('div');
     const picture = document.createElement('img');
@@ -53,12 +53,20 @@ const displayIngredient = (div, url, name, alco, abv, about) => {
     const degree = document.createElement('p');
     const description = document.createElement('div');
 
+    // разрезаем описание и берем первые 2 предложения
+    const descriptionArr = data.ingredients[0].strDescription.split('.');
+    // console.log(descriptionArr);
+    for (let i = 0; i < 2; i++) {
+        description.textContent += `${descriptionArr[i]}.`;
+    }
+
     wrap.className = 'ingredient-card';
-    picture.src = url;
-    ingredientName.textContent = name;
-    alcoholic.textContent = `Alcoholic: ${alco}`;
-    degree.textContent = `Alcohol by volume: ${abv}`;
-    description.textContent = about;
+    picture.src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
+    ingredientName.textContent = data.ingredients[0].strIngredient;
+    alcoholic.textContent = `Alcoholic: ${data.ingredients[0].strAlcohol}`;
+    if (data.ingredients[0].strABV){
+        degree.textContent = `Alcohol by volume: ${data.ingredients[0].strABV}%`;
+    }
 
     div.append(wrap);
     wrap.append(picture);
@@ -66,10 +74,6 @@ const displayIngredient = (div, url, name, alco, abv, about) => {
     wrap.append(alcoholic);
     wrap.append(degree);
     wrap.append(description);
-
-    // document.getElementById('image').src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
-    // document.getElementById("name").innerText = data.ingredients[0].strIngredient;
-    // document.getElementById("recipe").innerText = data.ingredients[0].strDescription;
 }
 
 // ищем ингредиент по названию
@@ -80,7 +84,7 @@ const searchIngredientByName = (ingredientName) => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            displayIngredient(cardsContainer, `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`, data.ingredients[0].strIngredient, data.ingredients[0].strAlcohol, data.ingredients[0].strABV, data.ingredients[0].strDescription);
+            displayIngredient(cardsContainer, data);
         })
         .catch(err => {
             console.log(err)
@@ -131,10 +135,10 @@ const displayCocktails = (data) => {
 }
 // Саша конец
 //Пати начало
-// Поиск случайного коктейля
+// Отрисовка случайного коктейля
 document.addEventListener("DOMContentLoaded",
     function (event) {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -142,6 +146,10 @@ document.addEventListener("DOMContentLoaded",
                 document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
                 document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
                 document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
+                document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+                document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
+                document.getElementById("random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+                document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
             })
             .catch(err => {
                 console.log(err)
