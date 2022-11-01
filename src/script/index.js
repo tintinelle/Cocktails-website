@@ -18,7 +18,7 @@ const searchCocktailByName = (cocktailName) => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            displayCocktails(data);
+            displayCocktails(cardsContainer, data);
         })
         .catch(err => {
             console.log(err)
@@ -64,7 +64,7 @@ const displayIngredient = (div, data) => {
     picture.src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
     ingredientName.textContent = data.ingredients[0].strIngredient;
     alcoholic.textContent = `Alcoholic: ${data.ingredients[0].strAlcohol}`;
-    if (data.ingredients[0].strABV){
+    if (data.ingredients[0].strABV) {
         degree.textContent = `Alcohol by volume: ${data.ingredients[0].strABV}%`;
     }
 
@@ -109,31 +109,59 @@ searchButton.addEventListener('click', () => {
     }
 })
 
+// пробуем отрисовку
+const displayCocktails = (div, data) => {
 
+    div.innerHTML = '';
+    for (let i = 0; i < 6; i++) {
+        const wrap_card = document.createElement('div');
+        const name_card = document.createElement('h2');
+        const picture_card = document.createElement('img');
+        const indredients_card = document.createElement('p');
+        const alcoholic_card = document.createElement('p');
+        const glass_card = document.createElement('div');
+
+        wrap_card.classList.add('card');
+        name_card.textContent = data.drinks[i].strDrink;
+        picture_card.src = data.drinks[i].strDrinkThumb;
+        indredients_card.textContent = `Ingredients: ${data.drinks[i].strIngredient1}, ${data.drinks[i].strIngredient2}, ${data.drinks[i].strIngredient3}, ${data.drinks[i].strIngredient4}`;
+        alcoholic_card.textContent = `Type: ${data.drinks[i].strAlcoholic}`;
+        glass_card.textContent = `Glass: ${data.drinks[i].strGlass}`;
+        div.append(wrap_card);
+
+        wrap_card.append(name_card);
+        wrap_card.append(picture_card);
+        wrap_card.append(indredients_card);
+        wrap_card.append(alcoholic_card);
+        wrap_card.append(glass_card);
+    }
+}
 
 // Ильвина конец
 
 // Саша начало
 
-const displayCocktails = (data) => {
-    for (let i = 0; i < 5; i++) {
-        document.getElementById('image').src = data.drinks[i].strDrinkThumb;
-        document.getElementById("name").innerText = data.drinks[i].strDrink;
-        document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
-        document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
-        document.getElementById("alcoholic").innerText = "Type: " + data.drinks[i].strAlcoholic;
-        document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
-        // document.getElementById("recipe").innerText = "Instructions: " + data.drinks[i].strInstructions;
+// const displayCocktails = (data) => {
+//     for (let i = 0; i < 5; i++) {
+//         document.getElementById('image').src = data.drinks[i].strDrinkThumb;
+//         document.getElementById("name").innerText = data.drinks[i].strDrink;
+//         document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
+//         document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
+//         document.getElementById("alcoholic").innerText = "Type: " + data.drinks[i].strAlcoholic;
+//         document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
+//         // document.getElementById("recipe").innerText = "Instructions: " + data.drinks[i].strInstructions;
 
-        let Instruction = data.drinks[0].strInstructions;
-        let Instrsplit = Instruction.split('.');
-        console.log(Instrsplit);
-        for (let i = 0; i < Instrsplit.length; i++) {
-            document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
-        }
-}
-}
+//         let Instruction = data.drinks[0].strInstructions;
+//         let Instrsplit = Instruction.split('.');
+//         console.log(Instrsplit);
+//         for (let i = 0; i < Instrsplit.length; i++) {
+//             document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
+//         }
+//     }
+// }
 // Саша конец
+
+
 //Пати начало
 // Отрисовка случайного коктейля
 document.addEventListener("DOMContentLoaded",
@@ -141,15 +169,13 @@ document.addEventListener("DOMContentLoaded",
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
                 document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
                 document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
                 document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
                 document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
                 document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-                document.getElementById("random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-                document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
             })
             .catch(err => {
                 console.log(err)
@@ -158,17 +184,41 @@ document.addEventListener("DOMContentLoaded",
     })
 
 //Обновление блока случайных коктейлей (пока не знаю как реализовать)
-// async function updateList() {
+
+
+//вариант 1
+// const target = document.querySelector(".random");
+// const button = document.querySelector("#update");
+
+// const onClickHandler = () => {
+//   //target.innerHTML = "Текст после изменения";
+
+//   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+//     .then((response) => response.json())
+//     .then((json) => (target.innerHTML = JSON.parse(json)));
+// };
+
+//button.addEventListener("click", onClickHandler);
+
+//вариант 2
+// async function elementUpdate(selector) {
 //     try {
-//         const html = await (await fetch(location.src)).text();
-//         const newList = new DOMParser().parseFromString(html, 'text/html');
-//         document.querySelector('.random').outerHTML = newList.querySelector('.random').outerHTML;
-//         console.log('.random');
-//         return true;
+//       const html = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')).text();
+//       const newdoc = new DOMParser().parseFromString(html, 'text/html');
+//       document.querySelector('.random').outerHTML = newdoc.querySelector('.random').outerHTML;
+//       console.log('Элемент '+selector+' был успешно обновлен');
+//       return true;
 //     } catch(err) {
-//         console.error(err);
-//         return false;
+//       console.log('При обновлении элемента '+selector+' произошла ошибка:');
+//       console.dir(err);
+//       return false;
 //     }
-// }
-document.querySelector('#update').addEventListener('click', updateList)
+//   }
+// document.querySelector('#update').addEventListener('click', elementUpdate)
+
+//вариант 3
+// document.querySelector('#update').addEventListener('click', event => {
+//     document.getElementById('random').contentWindow.location.reload(true); 
+// });
+
 //Пати конец
