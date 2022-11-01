@@ -52,13 +52,9 @@ body {
   width: 10%;
 }
 /* Саша начало */
-body {
-  background-color: #efefef;
-  height: 100%;
-}
-
 .flex {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   padding: 20px 10px;
@@ -66,19 +62,23 @@ body {
 
 .card {
   position: relative;
-  padding: 30px;
-  height: 500px;
-  width: 300px;
+  padding: 40px;
+  width: 25%;
   background-color: #fff;
   margin: 10px;
   overflow: visible;
+  font-size: 1.2em;
+}
+
+.recipe-card {
+  margin-bottom: 10px;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #glass {
@@ -87,10 +87,6 @@ img {
 
 #recipe {
   display: none;
-}
-
-.card:hover {
-  height: 520px;
 }
 
 .card:hover #glass {
@@ -153,6 +149,10 @@ ol, ul {
   align-items: center;
   justify-content: center;
   padding: 20px 10px;
+  text-align: left;
+}
+.random h2 {
+  text-align: center;
 }
 .random-card {
   position: relative;
