@@ -111,13 +111,27 @@ searchButton.addEventListener('click', () => {
 
 // пробуем отрисовку
 const displayCocktails = (div, data) => {
-
     div.innerHTML = '';
+
     for (let i = 0; i < 6; i++) {
+        // достаем все пары ключ-значение из объекта с коктейлем, формируем массив, куда положим будущие ингредиенты
+        let valuesAndKeys = Object.entries(data.drinks[i]);
+        let cocktailIngredients = [];
+        console.log(valuesAndKeys);
+    
+        // проходимся по парам ключ-значение и среди них ключи со словом Ingredient, если такой ключ есть и его значение не null, записываем его в массив cocktailIngredients
+        for (let i = 0; i < valuesAndKeys.length; i++) {
+            if (valuesAndKeys[i][0].includes('Ingredient') && valuesAndKeys[i][1] !== null) {
+                console.log(valuesAndKeys[i][0]);
+                cocktailIngredients.push(valuesAndKeys[i][1]);
+                console.log(cocktailIngredients);
+            }
+        }
+
         const wrap_card = document.createElement('div');
         const name_card = document.createElement('h2');
         const picture_card = document.createElement('img');
-        const indredients_card = document.createElement('p');
+        const indredients_card = document.createElement('div');
         const alcoholic_card = document.createElement('p');
         const glass_card = document.createElement('div');
         const recipe_card = document.createElement('div');
@@ -125,12 +139,17 @@ const displayCocktails = (div, data) => {
         wrap_card.classList.add('card');
         name_card.textContent = data.drinks[i].strDrink;
         picture_card.src = data.drinks[i].strDrinkThumb;
-        indredients_card.textContent = `Ingredients: ${data.drinks[i].strIngredient1}, ${data.drinks[i].strIngredient2}, ${data.drinks[i].strIngredient3}, ${data.drinks[i].strIngredient4}`;
         alcoholic_card.textContent = `Type: ${data.drinks[i].strAlcoholic}`;
         glass_card.textContent = `Glass: ${data.drinks[i].strGlass}`;
         recipe_card.textContent = `Instructions: ${data.drinks[i].strInstructions}`;
         div.append(wrap_card);
 
+        // отрисовываем ингредиенты
+        cocktailIngredients.forEach((el, i) => {
+            indredients_card.innerHTML += `${cocktailIngredients[i]}<br/>`;
+        })
+
+        div.append(wrap_card);
         wrap_card.append(name_card);
         wrap_card.append(picture_card);
         wrap_card.append(indredients_card);
