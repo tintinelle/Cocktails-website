@@ -12,6 +12,25 @@
     padding: 20px 10px;
     text-align: left;
 
+    @media (min-width: $mobile-large) and (max-width: $tablet) {
+        .random{
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+    }
+    @media (min-width: $mobile) and (max-width: $mobile-large)  {
+        .random{
+            justify-content: center;
+        }
+    }
+    @media (max-width: $mobile-small)  {
+        .random{
+            justify-content: center;
+        }
+    }
+
     h2 {
         text-align: center;
     }
@@ -32,7 +51,8 @@
         }
 
         &:hover {
-            height: 405px;
+            height: 401px;
+            box-shadow: 0 8px 16px 0 black;
         }
     }
 }
