@@ -120,6 +120,7 @@ const displayCocktails = (div, data) => {
         const indredients_card = document.createElement('p');
         const alcoholic_card = document.createElement('p');
         const glass_card = document.createElement('div');
+        const recipe_card = document.createElement('div');
 
         wrap_card.classList.add('card');
         name_card.textContent = data.drinks[i].strDrink;
@@ -127,6 +128,7 @@ const displayCocktails = (div, data) => {
         indredients_card.textContent = `Ingredients: ${data.drinks[i].strIngredient1}, ${data.drinks[i].strIngredient2}, ${data.drinks[i].strIngredient3}, ${data.drinks[i].strIngredient4}`;
         alcoholic_card.textContent = `Type: ${data.drinks[i].strAlcoholic}`;
         glass_card.textContent = `Glass: ${data.drinks[i].strGlass}`;
+        recipe_card.textContent = `Instructions: ${data.drinks[i].strInstructions}`;
         div.append(wrap_card);
 
         wrap_card.append(name_card);
@@ -134,6 +136,7 @@ const displayCocktails = (div, data) => {
         wrap_card.append(indredients_card);
         wrap_card.append(alcoholic_card);
         wrap_card.append(glass_card);
+        wrap_card.append(recipe_card);
     }
 }
 
