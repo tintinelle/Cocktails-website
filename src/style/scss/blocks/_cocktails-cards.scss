@@ -2,56 +2,60 @@
 
 body {
     background-color: #efefef;
-    height: 100%;
-  }
-  
-  .flex {
+}
+
+.flex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     padding: 20px 10px;
-  }
-  
-  .card {
+}
+
+.card {
     position: relative;
-    padding: 30px;
-    height: 700px;
-    /* width: 500px; */
+    padding: 40px;
+    min-height: fit-content;
+    // height: 700px;
+    width: 25%;
     background-color: #fff;
     margin: 10px;
     overflow: visible;
-  }
-  
-  img {
+}
+
+.recipe-card {
+    margin-bottom: 10px;
+}
+
+img {
     display: inline-block;
     max-width: 100%;
     -o-object-fit: cover;
-       object-fit: cover;
-  }
-  
-  #glass {
+    object-fit: cover;
+}
+
+#glass {
     display: none;
-  }
-  
-  #recipe {
+}
+
+#recipe {
     display: none;
-  }
-  
-  .card:hover #glass {
+}
+
+.card:hover #glass {
     display: block;
-  }
-  
-  .card:hover #recipe {
+}
+
+.card:hover #recipe {
     display: block;
-  }
-  
+}
+
 
 
 /* Саша конец */
@@ -64,4 +68,5 @@ body {
 
     text-align: center;
 }
+
 // Ильвина конец

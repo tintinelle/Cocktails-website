@@ -136,6 +136,7 @@ const displayCocktails = (div, data) => {
         const glass_card = document.createElement('div');
         const recipe_card = document.createElement('div');
 
+        recipe_card.classList.add('recipe-card')
         wrap_card.classList.add('card');
         name_card.textContent = data.drinks[i].strDrink;
         picture_card.src = data.drinks[i].strDrinkThumb;
