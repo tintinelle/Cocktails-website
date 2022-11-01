@@ -3,52 +3,55 @@
 body {
     background-color: #efefef;
     height: 100%;
-}
-
-.flex {
+  }
+  
+  .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     padding: 20px 10px;
-}
-
-.card {
+  }
+  
+  .card {
     position: relative;
     padding: 30px;
-    height: 500px;
-    width: 300px;
+    height: 700px;
+    /* width: 500px; */
     background-color: #fff;
     margin: 10px;
     overflow: visible;
-}
-
-img {
+  }
+  
+  img {
     display: inline-block;
     max-width: 100%;
-    object-fit: cover;
-}
-
-#glass {
-    // position: absolute;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  #glass {
     display: none;
-}
-
-#recipe {
-    // position: absolute;
+  }
+  
+  #recipe {
     display: none;
-}
-
-.card:hover {
-    // transform: scale(1.2);
-    height: 520px;
-}
-
-.card:hover #glass {
+  }
+  
+  .card:hover #glass {
     display: block;
-}
-.card:hover #recipe {
+  }
+  
+  .card:hover #recipe {
     display: block;
-}
+  }
+  
 
 
 /* Саша конец */
