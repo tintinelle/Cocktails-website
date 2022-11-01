@@ -141,6 +141,38 @@ ol, ul {
   color: #FFE70D;
 }
 
+.random-cards {
+  text-align: center;
+}
+.random-cards h1 {
+  color: white;
+}
+
+.random {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+}
+.random-card {
+  position: relative;
+  padding: 30px;
+  height: 400px;
+  width: 30%;
+  background-color: #fff;
+  margin: 10px;
+  overflow: visible;
+}
+.random-card_image {
+  display: inline-block;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.random-card:hover {
+  height: 405px;
+}
+
 body {
   background: linear-gradient(0deg, #151313 10%, #282828 50%, #151313 90%);
 }/*# sourceMappingURL=style.css.map */
