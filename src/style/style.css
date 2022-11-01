@@ -24,17 +24,18 @@ body {
 
 .search-form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 20px 10px;
 }
 .search-form__item {
   background-color: #282828;
-  border: 1px solid white;
+  outline: 1px solid white;
   color: gray;
   font-size: 1.3em;
 }
 .search-form__item:hover {
-  border: 1px solid #FFE70D;
+  outline: 1px solid #FFE70D;
 }
 .search-form__item_input {
   width: 40%;
@@ -51,6 +52,16 @@ body {
 .search-form__item_button {
   width: 10%;
 }
+
+.error-message {
+  width: 60%;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3em;
+  color: rgb(202, 68, 90);
+}
+
 /* Саша начало */
 .flex {
   display: flex;

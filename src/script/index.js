@@ -22,6 +22,7 @@ const searchCocktailByName = (cocktailName) => {
         })
         .catch(err => {
             console.log(err)
+            errorMessage.classList.add('error-message');
             errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
         });
 }
@@ -39,6 +40,7 @@ const searchCocktailByIngredient = (cocktail) => {
         })
         .catch(err => {
             console.log(err)
+            errorMessage.classList.add('error-message');
             errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
         });
 }
@@ -89,6 +91,7 @@ const searchIngredientByName = (ingredientName) => {
         })
         .catch(err => {
             console.log(err)
+            errorMessage.classList.add('error-message');
             errorMessage.innerHTML = 'Failed to find an ingredient. Please try another word.'
         });
 }
@@ -122,7 +125,7 @@ const displayCocktails = (div, data) => {
         const alcoholic_card = document.createElement('div');
         const glass_card = document.createElement('div');
         const recipe_card = document.createElement('div');
-        
+
         // достаем все пары ключ-значение из объекта с коктейлем, формируем массив, куда положим будущие ингредиенты
         let valuesAndKeys = Object.entries(data.drinks[i]);
         let cocktailIngredients = [];
