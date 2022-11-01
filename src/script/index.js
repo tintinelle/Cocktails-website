@@ -46,6 +46,7 @@ const searchCocktailByIngredient = (cocktail) => {
 // отрисовываем карточку с ингредиентом
 const displayIngredient = (div, data) => {
     div.innerHTML = '';
+
     const wrap = document.createElement('div');
     const picture = document.createElement('img');
     const ingredientName = document.createElement('h2');
@@ -113,15 +114,15 @@ searchButton.addEventListener('click', () => {
 const displayCocktails = (div, data) => {
     div.innerHTML = '';
 
-    const wrap_card = document.createElement('div');
-    const name_card = document.createElement('h2');
-    const picture_card = document.createElement('img');
-    const indredients_card = document.createElement('div');
-    const alcoholic_card = document.createElement('div');
-    const glass_card = document.createElement('div');
-    const recipe_card = document.createElement('div');
-
     for (let i = 0; i < 6; i++) {
+        const wrap_card = document.createElement('div');
+        const name_card = document.createElement('h2');
+        const picture_card = document.createElement('img');
+        const indredients_card = document.createElement('div');
+        const alcoholic_card = document.createElement('div');
+        const glass_card = document.createElement('div');
+        const recipe_card = document.createElement('div');
+        
         // достаем все пары ключ-значение из объекта с коктейлем, формируем массив, куда положим будущие ингредиенты
         let valuesAndKeys = Object.entries(data.drinks[i]);
         let cocktailIngredients = [];
