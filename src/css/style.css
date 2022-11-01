@@ -23,62 +23,80 @@ body {
 }
 
 .search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 20px 10px;
 }
+
 .search-form__item {
   background-color: #282828;
   border: 1px solid white;
   color: gray;
   font-size: 1.3em;
 }
+
 .search-form__item:hover {
   border: 1px solid #FFE70D;
 }
+
 .search-form__item_input {
   width: 40%;
   min-height: 3.5rem;
   padding-left: 10px;
 }
+
 .search-form__item_list {
   width: 20%;
   text-align: center;
 }
+
 .search-form__item_list option {
   background-color: #282828;
 }
+
 .search-form__item_button {
   width: 10%;
 }
+
 /* Саша начало */
+body {
+  background-color: #efefef;
+  height: 100%;
+}
+
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 20px 10px;
 }
 
 .card {
   position: relative;
-  padding: 40px;
-  width: 25%;
+  padding: 30px;
+  height: 700px;
+  /* width: 500px; */
   background-color: #fff;
   margin: 10px;
   overflow: visible;
-  font-size: 1.2em;
-}
-
-.recipe-card {
-  margin-bottom: 10px;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 #glass {
@@ -113,26 +131,37 @@ ol, ul {
   margin: 0 auto;
   background-color: #151313;
 }
+
 .nav-menu {
   max-width: 1150px;
   margin: 0 auto;
   padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 12px;
 }
+
 .nav-link {
   display: block;
   padding: 24px 0;
   text-decoration: none;
   color: white;
-  transition: color 0.2s ease;
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease;
 }
+
 .nav-link:hover {
   color: #FFE70D;
 }
@@ -140,20 +169,29 @@ ol, ul {
 .random-cards {
   text-align: center;
 }
+
 .random-cards h1 {
   color: white;
 }
 
 .random {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 20px 10px;
   text-align: left;
 }
+
 .random h2 {
   text-align: center;
 }
+
 .random-card {
   position: relative;
   padding: 30px;
@@ -163,16 +201,20 @@ ol, ul {
   margin: 10px;
   overflow: visible;
 }
+
 .random-card_image {
   display: inline-block;
   max-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
+
 .random-card:hover {
   height: 405px;
 }
 
 body {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, #151313), color-stop(50%, #282828), color-stop(90%, #151313));
   background: linear-gradient(0deg, #151313 10%, #282828 50%, #151313 90%);
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

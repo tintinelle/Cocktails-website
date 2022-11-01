@@ -1,54 +1,60 @@
 /* Саша начало */
 
-body {
-    background-color: #efefef;
-    height: 100%;
-}
 
 .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     padding: 20px 10px;
 }
 
 .card {
     position: relative;
-    padding: 30px;
-    height: 500px;
-    width: 300px;
+    padding: 40px;
+    // min-height: fit-content;
+    // height: 700px;
+    width: 25%;
     background-color: #fff;
     margin: 10px;
     overflow: visible;
+
+    font-size: 1.2em;
+}
+
+.recipe-card {
+    margin-bottom: 10px;
 }
 
 img {
     display: inline-block;
     max-width: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 
 #glass {
-    // position: absolute;
     display: none;
 }
 
 #recipe {
-    // position: absolute;
     display: none;
-}
-
-.card:hover {
-    // transform: scale(1.2);
-    height: 520px;
 }
 
 .card:hover #glass {
     display: block;
 }
+
 .card:hover #recipe {
     display: block;
 }
+
 
 
 /* Саша конец */
@@ -59,6 +65,7 @@ img {
     padding: 40px;
     background-color: white;
 
-        text-align: center;
+    text-align: center;
 }
+
 // Ильвина конец
