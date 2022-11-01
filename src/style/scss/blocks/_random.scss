@@ -10,6 +10,11 @@
     align-items: center;
     justify-content: center;
     padding: 20px 10px;
+    text-align: left;
+
+    h2 {
+        text-align: center;
+    }
 
     &-card {
         position: relative;
@@ -25,10 +30,6 @@
             max-width: 100%;
             object-fit: cover;
         }
-
-        // &_recipe {
-        //     display: block;
-        // }
 
         &:hover {
             height: 405px;

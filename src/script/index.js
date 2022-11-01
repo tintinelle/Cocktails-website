@@ -177,8 +177,6 @@ document.addEventListener("DOMContentLoaded",
                 document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
                 document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
                 document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-                document.getElementById("random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-                document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
             })
             .catch(err => {
                 console.log(err)
@@ -187,17 +185,41 @@ document.addEventListener("DOMContentLoaded",
     })
 
 //Обновление блока случайных коктейлей (пока не знаю как реализовать)
-// async function updateList() {
+
+
+//вариант 1
+// const target = document.querySelector(".random");
+// const button = document.querySelector("#update");
+
+// const onClickHandler = () => {
+//   //target.innerHTML = "Текст после изменения";
+
+//   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+//     .then((response) => response.json())
+//     .then((json) => (target.innerHTML = JSON.parse(json)));
+// };
+
+//button.addEventListener("click", onClickHandler);
+
+//вариант 2
+// async function elementUpdate(selector) {
 //     try {
-//         const html = await (await fetch(location.src)).text();
-//         const newList = new DOMParser().parseFromString(html, 'text/html');
-//         document.querySelector('.random').outerHTML = newList.querySelector('.random').outerHTML;
-//         console.log('.random');
-//         return true;
+//       const html = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')).text();
+//       const newdoc = new DOMParser().parseFromString(html, 'text/html');
+//       document.querySelector('.random').outerHTML = newdoc.querySelector('.random').outerHTML;
+//       console.log('Элемент '+selector+' был успешно обновлен');
+//       return true;
 //     } catch(err) {
-//         console.error(err);
-//         return false;
+//       console.log('При обновлении элемента '+selector+' произошла ошибка:');
+//       console.dir(err);
+//       return false;
 //     }
-// }
-// document.querySelector('#update').addEventListener('click', updateList)
+//   }
+// document.querySelector('#update').addEventListener('click', elementUpdate)
+
+//вариант 3
+// document.querySelector('#update').addEventListener('click', event => {
+//     document.getElementById('random').contentWindow.location.reload(true); 
+// });
+
 //Пати конец
