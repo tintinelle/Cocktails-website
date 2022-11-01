@@ -52,10 +52,6 @@ body {
   width: 10%;
 }
 /* Саша начало */
-body {
-  background-color: #efefef;
-}
-
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -67,13 +63,11 @@ body {
 .card {
   position: relative;
   padding: 40px;
-  min-height: -webkit-fit-content;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
   width: 25%;
   background-color: #fff;
   margin: 10px;
   overflow: visible;
+  font-size: 1.2em;
 }
 
 .recipe-card {

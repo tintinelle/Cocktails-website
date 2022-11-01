@@ -1,8 +1,5 @@
 /* Саша начало */
 
-body {
-    background-color: #efefef;
-}
 
 .flex {
     display: -webkit-box;
@@ -21,12 +18,14 @@ body {
 .card {
     position: relative;
     padding: 40px;
-    min-height: fit-content;
+    // min-height: fit-content;
     // height: 700px;
     width: 25%;
     background-color: #fff;
     margin: 10px;
     overflow: visible;
+
+    font-size: 1.2em;
 }
 
 .recipe-card {
