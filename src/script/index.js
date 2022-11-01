@@ -165,9 +165,17 @@ const displayCocktails = (div, data) => {
 
 //Пати начало
 // Отрисовка случайного коктейля
-document.addEventListener("DOMContentLoaded",
-    function (event) {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+// const newRandomCard = (data) => {
+//     document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
+//     document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
+//     document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
+//     document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
+//     document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+//     document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
+// }
+
+function newRandomCard(event) {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
             .then(response => response.json())
             .then(data => {
                 // console.log(data);
@@ -182,40 +190,21 @@ document.addEventListener("DOMContentLoaded",
                 console.log(err)
                 errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
             });
+}
+
+document.addEventListener("DOMContentLoaded", newRandomCard())
+
+//Обновление блока случайных коктейлей (пока удается только удалить)
+
+document.querySelector('#update').addEventListener('click', () => {
+    const randomCards = document.querySelectorAll('.random-card');
+    randomCards.forEach(elem => {
+        elem.remove();
     })
+    newRandomCard()
+})
 
-//Обновление блока случайных коктейлей (пока не знаю как реализовать)
 
-
-//вариант 1
-// const target = document.querySelector(".random");
-// const button = document.querySelector("#update");
-
-// const onClickHandler = () => {
-//   //target.innerHTML = "Текст после изменения";
-
-//   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-//     .then((response) => response.json())
-//     .then((json) => (target.innerHTML = JSON.parse(json)));
-// };
-
-//button.addEventListener("click", onClickHandler);
-
-//вариант 2
-// async function elementUpdate(selector) {
-//     try {
-//       const html = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')).text();
-//       const newdoc = new DOMParser().parseFromString(html, 'text/html');
-//       document.querySelector('.random').outerHTML = newdoc.querySelector('.random').outerHTML;
-//       console.log('Элемент '+selector+' был успешно обновлен');
-//       return true;
-//     } catch(err) {
-//       console.log('При обновлении элемента '+selector+' произошла ошибка:');
-//       console.dir(err);
-//       return false;
-//     }
-//   }
-// document.querySelector('#update').addEventListener('click', elementUpdate)
 
 //вариант 3
 // document.querySelector('#update').addEventListener('click', event => {
