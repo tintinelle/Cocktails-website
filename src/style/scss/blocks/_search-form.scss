@@ -1,12 +1,16 @@
 .main__top-background {
     min-height: 13rem;
-
     background: url('../images/32000-ffffff.svg') center / 70% no-repeat;
 }
 
 .main__title {
+    width: 60%;
+    margin-left: 20%;
+    padding: 20px;
     color: white;
     text-align: center;
+    border-top: 1px solid $yellow-color;
+    border-bottom: 1px solid $yellow-color;
 }
 
 .search-form {
@@ -19,7 +23,6 @@
         background-color: $background-color;
         outline: 1px solid white;
         color: gray;
-
         font-size: 1.3em;
 
         &:hover {
@@ -50,10 +53,8 @@
     width: 60%;
     border: none;
     padding: 20px;
-
     text-align: center;
     font-size: 1.3em;
-
     color: rgb(202, 68, 90);
 }
 
