@@ -24,3 +24,4 @@ You can also get a recipe of a random cocktail.
 <code><img height="25" src="https://user-images.githubusercontent.com/104452692/199507007-4358ad84-ffdf-4f30-9881-b44398f0c6db.png"></code>
 
 ## Result:
+https://tintinelle.github.io/Cocktails-website/
