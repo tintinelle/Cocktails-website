@@ -258,7 +258,7 @@ function newRandomCard(event) {
 
 document.addEventListener("DOMContentLoaded", newRandomCard())
 
-//Обновление блока случайных коктейлей (пока удается только удалить)
+//Обновление блока случайных коктейлей
 
 document.querySelector('#update').addEventListener('click', () => {
     newRandomCard()
