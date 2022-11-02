@@ -156,7 +156,7 @@ const displayCocktails = (div, data) => {
                 }
             }
 
-            wrap_card.classList.add('card');
+            wrap_card.classList.add('card'); 
             name_card.textContent = data.drinks[i].strDrink;
             picture_card.src = data.drinks[i].strDrinkThumb;
             alcoholic_card.innerHTML = `<b>Type:</b> ${data.drinks[i].strAlcoholic}`;
@@ -236,61 +236,32 @@ searchButton.addEventListener('click', () => {
 
 //Пати начало
 // Отрисовка случайного коктейля
-document.addEventListener("DOMContentLoaded",
-    function (event) {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data);
-                document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
-                document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
-                document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-                document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
-                document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-                document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-            })
-            .catch(err => {
-                console.log(err)
-                errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
-            });
-    })
 
-//Обновление блока случайных коктейлей (пока не знаю как реализовать)
+function newRandomCard(event) {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
+            document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
+            document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
+            document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
+            document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+            document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
 
+        })
+        .catch(err => {
+            console.log(err)
+            errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
+        });
+}
 
-//вариант 1
-// const target = document.querySelector(".random");
-// const button = document.querySelector("#update");
+document.addEventListener("DOMContentLoaded", newRandomCard())
 
-// const onClickHandler = () => {
-//   //target.innerHTML = "Текст после изменения";
+//Обновление блока случайных коктейлей (пока удается только удалить)
 
-//   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-//     .then((response) => response.json())
-//     .then((json) => (target.innerHTML = JSON.parse(json)));
-// };
-
-//button.addEventListener("click", onClickHandler);
-
-//вариант 2
-// async function elementUpdate(selector) {
-//     try {
-//       const html = await (await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')).text();
-//       const newdoc = new DOMParser().parseFromString(html, 'text/html');
-//       document.querySelector('.random').outerHTML = newdoc.querySelector('.random').outerHTML;
-//       console.log('Элемент '+selector+' был успешно обновлен');
-//       return true;
-//     } catch(err) {
-//       console.log('При обновлении элемента '+selector+' произошла ошибка:');
-//       console.dir(err);
-//       return false;
-//     }
-//   }
-// document.querySelector('#update').addEventListener('click', elementUpdate)
-
-// вариант 3
-document.querySelector('#update').addEventListener('click', event => {
-    document.getElementById('random').contentWindow.location.reload(true);
-});
+document.querySelector('#update').addEventListener('click', () => {
+    newRandomCard()
+})
 
 //Пати конец

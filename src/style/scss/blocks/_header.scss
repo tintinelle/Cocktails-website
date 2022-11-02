@@ -6,6 +6,22 @@ ol, ul {
     margin: 0 auto;
     background-color: $main-color;
 
+    @media screen and (min-width:800px) and (max-width:1090px) {
+        .nav{
+            justify-content: center;
+        }
+    }
+    @media screen and (min-width:507px) and (max-width:799px) {
+        .nav{
+            justify-content: center;
+        }
+    }
+    @media screen and (max-width:506px) {
+        .nav{
+            justify-content: center;
+        }
+    }
+
     &-menu {
         @include container;
         display: flex;
@@ -29,13 +45,5 @@ ol, ul {
         }
     } 
 }
-// .banner {
 
-//     &_container {
-//         background: url(/src/images/selection2-of-various-cocktails-on-the-table.jpg);
-//         background-size: cover;
-//         min-height: 60vh;
-    
-//     }
-// }
 //Пати конец
