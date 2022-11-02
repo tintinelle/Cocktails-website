@@ -58,6 +58,30 @@ img {
 /* Саша конец */
 
 // Ильвина начало
+.card-by-ingredient {
+    width: 25%;
+    min-height: 200px;
+    padding: 40px;
+    margin: 10px;
+
+    line-height: 1.3em;
+
+    background-color: #fff;
+}
+
+.card-button {
+    width: 60%;
+    padding: 10px;
+    margin-left: 20%;
+    border: 2px solid $background-color;
+    font-size: 1.2em;
+
+    background-color: white;
+    &:hover {
+        border: 2px solid $yellow-color;
+    }
+}
+
 .ingredient-card {
     width: 40%;
     padding: 40px;

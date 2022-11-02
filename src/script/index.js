@@ -35,14 +35,59 @@ const searchCocktailByIngredient = (cocktail) => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            // так как при поиске коктейля по ингредиенту сервер выдает лишь название и фото, отправляем искать коктейль по названию, а уже оттуда отправляем на отрисовку:
-            searchCocktailByName(data.drinks[0].strDrink);
+            displayCocktailByIngredient(cardsContainer, data);
         })
         .catch(err => {
             console.log(err)
             errorMessage.classList.add('error-message');
             errorMessage.innerHTML = 'Failed to find a cocktail. Please try another word.'
         });
+}
+
+// ищем ингредиент по названию
+const searchIngredientByName = (ingredientName) => {
+    errorMessage.innerHTML = '';
+
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredientName}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            displayIngredient(cardsContainer, data);
+        })
+        .catch(err => {
+            console.log(err)
+            errorMessage.classList.add('error-message');
+            errorMessage.innerHTML = 'Failed to find an ingredient. Please try another word.'
+        });
+}
+
+// отрисовываем карточки с коктейлями по ингредиенту (там только фото и название), по клику на кнопку показываем полный рецепт
+const displayCocktailByIngredient = (div, data) => {
+    div.innerHTML = '';
+
+    for (let i = 0; i < 6; i++) {
+        if (data.drinks[i]) {
+            const wrap_card = document.createElement('div');
+            const name_card = document.createElement('h2');
+            const picture_card = document.createElement('img');
+            const searchBtn_card = document.createElement('button');
+
+            wrap_card.classList.add('card-by-ingredient');
+            searchBtn_card.classList.add('card-button');
+            name_card.textContent = data.drinks[i].strDrink;
+            picture_card.src = data.drinks[i].strDrinkThumb;
+            searchBtn_card.innerHTML = `Search cocktail recipe`;
+
+            div.append(wrap_card);
+            wrap_card.append(name_card);
+            wrap_card.append(picture_card);
+            wrap_card.append(searchBtn_card);
+
+            searchBtn_card.addEventListener('click', () => {
+                searchCocktailByName(data.drinks[i].strDrink);
+            })
+        }
+    }
 }
 
 // отрисовываем карточку с ингредиентом
@@ -78,39 +123,6 @@ const displayIngredient = (div, data) => {
     wrap.append(description);
 }
 
-// ищем ингредиент по названию
-const searchIngredientByName = (ingredientName) => {
-    errorMessage.innerHTML = '';
-
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredientName}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            displayIngredient(cardsContainer, data);
-        })
-        .catch(err => {
-            console.log(err)
-            errorMessage.classList.add('error-message');
-            errorMessage.innerHTML = 'Failed to find an ingredient. Please try another word.'
-        });
-}
-
-// действия при нажатии на кнопку поиска
-searchButton.addEventListener('click', () => {
-    const listValue = selectList.options[selectList.selectedIndex].value;
-
-    if (listValue == "cocktail-name") {
-        searchCocktailByName(searchInput.value);
-    }
-
-    if (listValue == "cocktail-ingredient") {
-        searchCocktailByIngredient(searchInput.value);
-    }
-
-    if (listValue == "ingredient-name") {
-        searchIngredientByName(searchInput.value);
-    }
-})
 
 // отрисовка карточек коктейлей
 const displayCocktails = (div, data) => {
@@ -179,6 +191,23 @@ const displayCocktails = (div, data) => {
         }
     }
 }
+
+// действия при нажатии на кнопку поиска
+searchButton.addEventListener('click', () => {
+    const listValue = selectList.options[selectList.selectedIndex].value;
+
+    if (listValue == "cocktail-name") {
+        searchCocktailByName(searchInput.value);
+    }
+
+    if (listValue == "cocktail-ingredient") {
+        searchCocktailByIngredient(searchInput.value);
+    }
+
+    if (listValue == "ingredient-name") {
+        searchIngredientByName(searchInput.value);
+    }
+})
 
 // Ильвина конец
 
