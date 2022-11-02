@@ -2,8 +2,6 @@
 
 It is a website for searching cocktails.
 
-<img width="700" alt="" src="">
-
 ## What can it do?
 
 You can search for:
@@ -14,6 +12,10 @@ You can search for:
 
 You can also get a recipe of a random cocktail.
 
+## How does it look like? 
+
+<img width="700" alt="" src="https://user-images.githubusercontent.com/104452692/199520951-aaabde63-dc8a-4a6e-a10d-fd7564247658.png">
+
 ## Technologies:
 
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code>
@@ -22,3 +24,4 @@ You can also get a recipe of a random cocktail.
 <code><img height="25" src="https://user-images.githubusercontent.com/104452692/199507007-4358ad84-ffdf-4f30-9881-b44398f0c6db.png"></code>
 
 ## Result:
+https://tintinelle.github.io/Cocktails-website/
