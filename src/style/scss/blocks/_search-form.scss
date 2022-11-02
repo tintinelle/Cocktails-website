@@ -11,20 +11,20 @@
 
 .search-form {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 20px 10px;
 
     &__item {
         background-color: $background-color;
-        border: 1px solid white;
+        outline: 1px solid white;
         color: gray;
 
         font-size: 1.3em;
 
         &:hover {
-            border: 1px solid $yellow-color;
+            outline: 1px solid $yellow-color;
         }
-        // .search-form__item_input
 
         &_input {
             width: 40%;
@@ -43,13 +43,101 @@
         &_button {
             width: 10%;
         }
+    }
+}
 
-        &_error-message {
+.error-message {
+    width: 60%;
+    border: none;
+    padding: 20px;
+
+    text-align: center;
+    font-size: 1.3em;
+
+    color: rgb(202, 68, 90);
+}
+
+
+@media screen and (min-width:507px) and (max-width:1023px) {
+    .main__top-background {
+        min-height: 8rem;
+    }
+
+    .search-form {
+        width: 95%;
+        &__item {
+            &_input {
+                width: 40%;
+            }
+    
+            &_list {
+                width: 40%;
+            }
+    
+            &_button {
+                width: 15%;
+            }
         }
     }
 }
 
+@media screen and (min-width:388px) and (max-width:506px) {
+    .main__top-background {
+        min-height: 10rem;
+    
+        background: url('../images/picture_mobile.svg') center / 25% no-repeat;
+    }
+    .search-form {
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
 
-@media screen and (min-width:1024px) and (max-width:1300px) {}
-@media screen and (min-width:768px) and (max-width:1023px) {}
-@media screen and (max-width:320px) {}
+        &__item {
+            min-height: 3rem;
+            margin-bottom: 15px;
+    
+            &_input {
+                width: 80%;
+            }
+    
+            &_list {
+                width: 84%;
+            }
+    
+            &_button {
+                width: 84%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:387px) {
+    .main__top-background {
+        min-height: 11rem;
+    
+        background: url('../images/picture_mobile.svg') center / 35% no-repeat;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+
+        &__item {
+            min-height: 3rem;
+            margin-bottom: 15px;
+    
+            &_input {
+                width: 80%;
+            }
+    
+            &_list {
+                width: 84%;
+            }
+    
+            &_button {
+                width: 84%;
+            }
+        }
+    }
+}
