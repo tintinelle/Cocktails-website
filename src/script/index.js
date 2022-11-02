@@ -58,7 +58,6 @@ const displayIngredient = (div, data) => {
 
     // разрезаем описание и берем первые 2 предложения
     const descriptionArr = data.ingredients[0].strDescription.split('.');
-    // console.log(descriptionArr);
     for (let i = 0; i < 2; i++) {
         description.textContent += `${descriptionArr[i]}.`;
     }
@@ -66,9 +65,9 @@ const displayIngredient = (div, data) => {
     wrap.className = 'ingredient-card';
     picture.src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
     ingredientName.textContent = data.ingredients[0].strIngredient;
-    alcoholic.textContent = `Alcoholic: ${data.ingredients[0].strAlcohol}`;
+    alcoholic.innerHTML = `<b>Alcoholic:</b> ${data.ingredients[0].strAlcohol}`;
     if (data.ingredients[0].strABV) {
-        degree.textContent = `Alcohol by volume: ${data.ingredients[0].strABV}%`;
+        degree.innerHTML = `<b>Alcohol by volume:</b> ${data.ingredients[0].strABV}%`;
     }
 
     div.append(wrap);
@@ -118,63 +117,66 @@ const displayCocktails = (div, data) => {
     div.innerHTML = '';
 
     for (let i = 0; i < 6; i++) {
-        const wrap_card = document.createElement('div');
-        const name_card = document.createElement('h2');
-        const picture_card = document.createElement('img');
-        const indredients_card = document.createElement('div');
-        const alcoholic_card = document.createElement('div');
-        const glass_card = document.createElement('div');
-        const recipe_card = document.createElement('div');
+        if (data.drinks[i]) {
+            const wrap_card = document.createElement('div');
+            const name_card = document.createElement('h2');
+            const picture_card = document.createElement('img');
+            const indredients_card = document.createElement('div');
+            const alcoholic_card = document.createElement('div');
+            const glass_card = document.createElement('div');
+            const recipe_card = document.createElement('div');
 
-        // достаем все пары ключ-значение из объекта с коктейлем, формируем массив, куда положим будущие ингредиенты
-        let valuesAndKeys = Object.entries(data.drinks[i]);
-        let cocktailIngredients = [];
-        let ingredientsMeasures = [];
-        // console.log(valuesAndKeys);
+            // достаем все пары ключ-значение из объекта с коктейлем, формируем массив, куда положим будущие ингредиенты
+            let valuesAndKeys = Object.entries(data.drinks[i]);
+            let cocktailIngredients = [];
+            let ingredientsMeasures = [];
+            // console.log(valuesAndKeys);
 
-        // проходимся по парам ключ-значение
-        for (let i = 0; i < valuesAndKeys.length; i++) {
-            // ищем ключи со словом Ingredient, если такой ключ есть и его значение не null, записываем его в массив cocktailIngredients
-            if (valuesAndKeys[i][0].includes('Ingredient') && valuesAndKeys[i][1] !== null) {
-                cocktailIngredients.push(valuesAndKeys[i][1]);
+            // проходимся по парам ключ-значение
+            for (let i = 0; i < valuesAndKeys.length; i++) {
+                // ищем ключи со словом Ingredient, если такой ключ есть и его значение не null, записываем его в массив cocktailIngredients
+                if (valuesAndKeys[i][0].includes('Ingredient') && valuesAndKeys[i][1] !== null) {
+                    cocktailIngredients.push(valuesAndKeys[i][1]);
+                }
+                // проделываем то же самое с количеством каждого ингредиента
+                if (valuesAndKeys[i][0].includes('Measure') && valuesAndKeys[i][1] !== null) {
+                    ingredientsMeasures.push(valuesAndKeys[i][1].toLowerCase());
+                }
             }
-            // проделываем то же самое с количеством каждого ингредиента
-            if (valuesAndKeys[i][0].includes('Measure') && valuesAndKeys[i][1] !== null) {
-                ingredientsMeasures.push(valuesAndKeys[i][1].toLowerCase());
-            }
+
+            wrap_card.classList.add('card');
+            name_card.textContent = data.drinks[i].strDrink;
+            picture_card.src = data.drinks[i].strDrinkThumb;
+            alcoholic_card.innerHTML = `<b>Type:</b> ${data.drinks[i].strAlcoholic}`;
+            glass_card.innerHTML = `<b>Glass:</b> ${data.drinks[i].strGlass}`;
+            indredients_card.innerHTML = '<b>Ingredients:</b><br/>';
+            recipe_card.innerHTML = '<b>Instructions:</b><br/>';
+
+            // отрисовываем ингредиенты
+            cocktailIngredients.forEach((el, i) => {
+                if (!ingredientsMeasures[i]) {
+                    ingredientsMeasures[i] = 'a bit';
+                }
+                indredients_card.innerHTML += `${cocktailIngredients[i]}   -   ${ingredientsMeasures[i]}<br/>`;
+            })
+
+            // отрисовываем рецепт
+            let instruction = data.drinks[i].strInstructions;
+            let instructions = instruction.split('.');
+            instructions.forEach((el, i) => {
+                if (instructions[i]) {
+                    recipe_card.innerHTML += `&bull;  ${instructions[i]}<br/>`;
+                }
+            })
+
+            div.append(wrap_card);
+            wrap_card.append(name_card);
+            wrap_card.append(picture_card);
+            wrap_card.append(alcoholic_card);
+            wrap_card.append(glass_card);
+            wrap_card.append(indredients_card);
+            wrap_card.append(recipe_card);
         }
-
-        recipe_card.classList.add('recipe-card')
-        wrap_card.classList.add('card');
-        name_card.textContent = data.drinks[i].strDrink;
-        picture_card.src = data.drinks[i].strDrinkThumb;
-        indredients_card.innerHTML = 'Ingredients:<br/>';
-        alcoholic_card.textContent = `Type: ${data.drinks[i].strAlcoholic}`;
-        glass_card.textContent = `Glass: ${data.drinks[i].strGlass}`;
-        recipe_card.innerHTML = 'Instructions:<br/>';
-
-        // отрисовываем ингредиенты
-        cocktailIngredients.forEach((el, i) => {
-            if (!ingredientsMeasures[i]) {
-                ingredientsMeasures[i] = 'a bit';
-            }
-            indredients_card.innerHTML += `${cocktailIngredients[i]}   -   ${ingredientsMeasures[i]}<br/>`;
-        })
-
-        // отрисовываем рецепт
-        let instruction = data.drinks[i].strInstructions;
-        let instructions = instruction.split('.');
-        instructions.forEach((el, i) => {
-            recipe_card.innerHTML += `${instructions[i]}<br/>`;
-        })
-
-        div.append(wrap_card);
-        wrap_card.append(name_card);
-        wrap_card.append(picture_card);
-        wrap_card.append(alcoholic_card);
-        wrap_card.append(indredients_card);
-        wrap_card.append(glass_card);
-        wrap_card.append(recipe_card);
     }
 }
 
@@ -257,9 +259,9 @@ document.addEventListener("DOMContentLoaded",
 //   }
 // document.querySelector('#update').addEventListener('click', elementUpdate)
 
-//вариант 3
-// document.querySelector('#update').addEventListener('click', event => {
-//     document.getElementById('random').contentWindow.location.reload(true); 
-// });
+// вариант 3
+document.querySelector('#update').addEventListener('click', event => {
+    document.getElementById('random').contentWindow.location.reload(true);
+});
 
 //Пати конец
