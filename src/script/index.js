@@ -156,7 +156,7 @@ const displayCocktails = (div, data) => {
                 }
             }
 
-            wrap_card.classList.add('card');
+            wrap_card.classList.add('card'); 
             name_card.textContent = data.drinks[i].strDrink;
             picture_card.src = data.drinks[i].strDrinkThumb;
             alcoholic_card.innerHTML = `<b>Type:</b> ${data.drinks[i].strAlcoholic}`;
@@ -236,31 +236,24 @@ searchButton.addEventListener('click', () => {
 
 //Пати начало
 // Отрисовка случайного коктейля
-// const newRandomCard = (data) => {
-//     document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
-//     document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
-//     document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-//     document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
-//     document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-//     document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-// }
 
 function newRandomCard(event) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data);
-                document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
-                document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
-                document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
-                document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
-                document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
-                document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
-            })
-            .catch(err => {
-                console.log(err)
-                errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
-            });
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            document.querySelector('.random-card_image').src = data.drinks[0].strDrinkThumb;
+            document.querySelector(".random-card_name").innerText = data.drinks[0].strDrink;
+            document.querySelector(".random-card_ingredient").innerText = "Ingredients: " + data.drinks[0].strIngredient1 + ", " + data.drinks[0].strIngredient2 + ", " + data.drinks[0].strIngredient3 + ", " + data.drinks[0].strIngredient4;
+            document.querySelector(".random-card_recipe").innerText = data.drinks[0].strInstructions;
+            document.querySelector(".random-card_alcoholic").innerText = "Type: " + data.drinks[0].strAlcoholic;
+            document.querySelector(".random-card_glass").innerText = "Glass: " + data.drinks[0].strGlass;
+
+        })
+        .catch(err => {
+            console.log(err)
+            errorMessage.innerHTML = 'Failed to update cocktail list. Please try again.'
+        });
 }
 
 document.addEventListener("DOMContentLoaded", newRandomCard())
@@ -268,18 +261,7 @@ document.addEventListener("DOMContentLoaded", newRandomCard())
 //Обновление блока случайных коктейлей (пока удается только удалить)
 
 document.querySelector('#update').addEventListener('click', () => {
-    const randomCards = document.querySelectorAll('.random-card');
-    randomCards.forEach(elem => {
-        elem.remove();
-    })
     newRandomCard()
 })
-
-
-
-// вариант 3
-document.querySelector('#update').addEventListener('click', event => {
-    document.getElementById('random').contentWindow.location.reload(true);
-});
 
 //Пати конец

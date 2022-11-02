@@ -7,24 +7,42 @@
 }
 .random {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     padding: 20px 10px;
     text-align: left;
 
-    @media (min-width: $mobile-large) and (max-width: $tablet) {
-        .random{
-            justify-content: center;
+    @media screen and (min-width:800px) and (max-width:1090px) {
+        .random-card{
+            width: 35%;
+            min-height: auto;
+            font-size: 1em;
+            text-overflow: clip;
+        }
+        #random-card_content {
+            overflow: scroll;
         }
     }
-    @media (min-width: $mobile) and (max-width: $mobile-large)  {
-        .random{
-            justify-content: center;
+    @media screen and (min-width:507px) and (max-width:799px) {
+        .random-card{
+            padding: 20px;
+            width: 80%;
+            font-size: 1.5em;
+            min-height: 600px;
+        }
+        #random-card_content {
+            overflow: scroll;
         }
     }
-    @media (max-width: $mobile-small)  {
-        .random{
-            justify-content: center;
+    @media screen and (max-width:506px) {
+        .random-card{
+            font-size: 1em;
+            min-height: fit-content;
+            width: 60%;
+        }
+        #random-card_content {
+            overflow: scroll;
         }
     }
 
@@ -35,11 +53,14 @@
     &-card {
         position: relative;
         padding: 30px;
+        margin: 10px;
         height: 400px;
         width: 30%;
         background-color: #fff;
         margin: 10px;
         overflow: visible;
+
+        line-height: 1.3em;
 
         &_image {
             display: inline-block;
@@ -48,7 +69,6 @@
         }
 
         &:hover {
-            height: 401px;
             box-shadow: 0 8px 16px 0 black;
         }
     }
