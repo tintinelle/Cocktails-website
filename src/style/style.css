@@ -8,7 +8,8 @@ body {
   font-weight: 500;
 }
 
-.ingredient-card {
+.ingredient-card,
+.card {
   font-size: 1.2em;
 }
 
@@ -24,17 +25,18 @@ body {
 
 .search-form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 20px 10px;
 }
 .search-form__item {
   background-color: #282828;
-  border: 1px solid white;
+  outline: 1px solid white;
   color: gray;
   font-size: 1.3em;
 }
 .search-form__item:hover {
-  border: 1px solid #FFE70D;
+  outline: 1px solid #FFE70D;
 }
 .search-form__item_input {
   width: 40%;
@@ -51,6 +53,81 @@ body {
 .search-form__item_button {
   width: 10%;
 }
+
+.error-message {
+  width: 60%;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3em;
+  color: rgb(202, 68, 90);
+}
+
+@media screen and (min-width: 507px) and (max-width: 1023px) {
+  .main__top-background {
+    min-height: 8rem;
+  }
+  .search-form {
+    width: 95%;
+  }
+  .search-form__item_input {
+    width: 40%;
+  }
+  .search-form__item_list {
+    width: 40%;
+  }
+  .search-form__item_button {
+    width: 15%;
+  }
+}
+@media screen and (min-width: 388px) and (max-width: 506px) {
+  .main__top-background {
+    min-height: 10rem;
+    background: url("../images/picture_mobile.svg") center/25% no-repeat;
+  }
+  .search-form {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  .search-form__item {
+    min-height: 3rem;
+    margin-bottom: 15px;
+  }
+  .search-form__item_input {
+    width: 80%;
+  }
+  .search-form__item_list {
+    width: 84%;
+  }
+  .search-form__item_button {
+    width: 84%;
+  }
+}
+@media screen and (max-width: 387px) {
+  .main__top-background {
+    min-height: 11rem;
+    background: url("../images/picture_mobile.svg") center/35% no-repeat;
+  }
+  .search-form {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  .search-form__item {
+    min-height: 3rem;
+    margin-bottom: 15px;
+  }
+  .search-form__item_input {
+    width: 80%;
+  }
+  .search-form__item_list {
+    width: 84%;
+  }
+  .search-form__item_button {
+    width: 84%;
+  }
+}
 /* Саша начало */
 .flex {
   display: flex;
@@ -62,21 +139,19 @@ body {
 
 .card {
   position: relative;
-  padding: 40px;
   width: 25%;
-  background-color: #fff;
+  min-height: 980px;
+  padding: 40px;
   margin: 10px;
   overflow: visible;
-  font-size: 1.2em;
-}
-
-.recipe-card {
-  margin-bottom: 10px;
+  line-height: 1.3em;
+  background-color: #fff;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
+  margin-bottom: 20px;
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -98,6 +173,27 @@ img {
 }
 
 /* Саша конец */
+.card-by-ingredient {
+  width: 25%;
+  min-height: 200px;
+  padding: 40px;
+  margin: 10px;
+  line-height: 1.3em;
+  background-color: #fff;
+}
+
+.card-button {
+  width: 60%;
+  padding: 10px;
+  margin-left: 20%;
+  border: 2px solid #282828;
+  font-size: 1.2em;
+  background-color: white;
+}
+.card-button:hover {
+  border: 2px solid #FFE70D;
+}
+
 .ingredient-card {
   width: 40%;
   padding: 40px;
@@ -105,6 +201,40 @@ img {
   text-align: center;
 }
 
+@media screen and (min-width: 800px) and (max-width: 1090px) {
+  .card {
+    width: 20%;
+    min-height: 600px;
+    font-size: 1em;
+  }
+  img {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (min-width: 507px) and (max-width: 799px) {
+  .card {
+    padding: 20px;
+    width: 35%;
+    min-height: 550px;
+    font-size: 1em;
+  }
+  img {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 506px) {
+  .card {
+    padding: 25px;
+    width: 60%;
+    font-size: 1em;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+  }
+  img {
+    margin-bottom: 10px;
+  }
+}
 ol, ul {
   list-style: none;
 }
