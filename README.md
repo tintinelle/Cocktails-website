@@ -2,8 +2,6 @@
 
 It is a website for searching cocktails.
 
-<img width="700" alt="" src="">
-
 ## What can it do?
 
 You can search for:
@@ -13,6 +11,10 @@ You can search for:
 3. Ingredients (you will get the characteristics of a certain ingredient)
 
 You can also get a recipe of a random cocktail.
+
+## How does it look like? 
+
+<img width="700" alt="" src="https://user-images.githubusercontent.com/104452692/199520951-aaabde63-dc8a-4a6e-a10d-fd7564247658.png">
 
 ## Technologies:
 
