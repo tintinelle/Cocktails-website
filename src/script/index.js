@@ -142,7 +142,6 @@ const displayCocktails = (div, data) => {
             let valuesAndKeys = Object.entries(data.drinks[i]);
             let cocktailIngredients = [];
             let ingredientsMeasures = [];
-            // console.log(valuesAndKeys);
 
             // проходимся по парам ключ-значение
             for (let i = 0; i < valuesAndKeys.length; i++) {
@@ -236,7 +235,6 @@ searchButton.addEventListener('click', () => {
 
 //Пати начало
 // Отрисовка случайного коктейля
-
 function newRandomCard(event) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(response => response.json())

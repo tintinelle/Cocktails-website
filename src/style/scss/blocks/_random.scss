@@ -29,7 +29,7 @@
             padding: 20px;
             width: 80%;
             font-size: 1.5em;
-            min-height: 600px;
+            height: 600px;
         }
         #random-card_content {
             overflow: scroll;
@@ -54,7 +54,7 @@
         position: relative;
         padding: 30px;
         margin: 10px;
-        height: 400px;
+        min-height: 400px;
         width: 30%;
         background-color: #fff;
         margin: 10px;

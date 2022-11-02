@@ -1,6 +1,4 @@
 /* Саша начало */
-
-
 .flex {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -28,7 +26,6 @@
     background-color: #fff;
 }
 
-
 img {
     display: inline-block;
     max-width: 100%;
@@ -52,9 +49,6 @@ img {
 .card:hover #recipe {
     display: block;
 }
-
-
-
 /* Саша конец */
 
 // Ильвина начало
@@ -86,20 +80,23 @@ img {
     width: 40%;
     padding: 40px;
     background-color: white;
-
     text-align: center;
 }
 
 @media screen and (min-width:800px) and (max-width:1090px){
     .card {
-        // padding: 20px;
         width: 20%;
         min-height: 600px;
         font-size: 1em;
+        & img {
+            margin-bottom: 15px;
+        }
     }
-    
-    img {
-        margin-bottom: 15px;
+
+    .card-button {
+        width: 70%;
+        margin-left: 15%;
+        font-size: 1em;
     }
 }
 
@@ -109,10 +106,24 @@ img {
         width: 35%;
         min-height: 550px;
         font-size: 1em;
+
+        & img {
+            margin-bottom: 15px;
+        }
     }
-    
-    img {
-        margin-bottom: 15px;
+    .card-by-ingredient {
+        padding: 20px;
+        width: 35%;
+        min-height: 350px;
+
+        & h2 {
+        font-size: 1.2em;
+    }
+    }
+    .card-button {
+        width: 70%;
+        margin-left: 15%;
+        font-size: 1em;
     }
 }
 
@@ -122,10 +133,14 @@ img {
         width: 60%;
         font-size: 1em;
         min-height: fit-content;
+        & img {
+            margin-bottom: 10px;
+        }
     }
-    img {
-        margin-bottom: 10px;
-    }
-}
 
+    .card-by-ingredient {
+        width: 60%;
+    }
+    
+}
 // Ильвина конец
