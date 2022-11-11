@@ -2,11 +2,11 @@
 @import "scss/vars"; //Переменные
 @import "scss/mixins"; //Миксины 
 
+@import "scss/blocks/body";
+@import "scss/blocks/main";
 @import "scss/blocks/search-form"; //Форма поиска Ильвина 
 @import "scss/blocks/cocktails-cards"; //Карточки с коктейлями Саша
 @import "scss/blocks/header"; //Баннер и хедер Пати
 @import "scss/blocks/random"; //Карточки рандомные Пати
 
-body {
-    background: linear-gradient(0deg, $main-color 10%, $background-color 50%, $main-color 90%);
-}
+

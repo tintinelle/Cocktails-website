@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    align-items: stretch;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -16,7 +16,6 @@
 .card {
     position: relative;
     width: 25%;
-    min-height: 980px;
     padding: 40px;
     margin: 10px;
     overflow: visible;
@@ -142,5 +141,8 @@ img {
         width: 60%;
     }
     
+    .ingredient-card {
+        width: 65%;
+    }
 }
 // Ильвина конец

@@ -1,0 +1,36 @@
+.main__top-background {
+    min-height: 13rem;
+    background: url('../images/32000-ffffff.svg') center / 70% no-repeat;
+}
+
+.main__title {
+    width: 60%;
+    margin-left: 20%;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-top: 1px solid $yellow-color;
+    border-bottom: 1px solid $yellow-color;
+}
+
+@media screen and (min-width:507px) and (max-width:1023px) {
+    .main__top-background {
+        min-height: 8rem;
+    }
+}
+
+
+@media screen and (min-width:388px) and (max-width:506px) {
+    .main__top-background {
+        min-height: 10rem;
+        background: url('../images/picture_mobile.svg') center / 25% no-repeat;
+    }
+}
+
+@media screen and (max-width:387px) {
+    .main__top-background {
+        min-height: 11rem;
+
+        background: url('../images/picture_mobile.svg') center / 35% no-repeat;
+    }
+}
