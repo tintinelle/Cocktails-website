@@ -9,12 +9,12 @@ const errorMessage = document.getElementById('errorMessage');
 const cardsContainer = document.getElementById('cardsContainer');
 
 // ищем коктейль по названию
-const searchCocktailByName = (cocktailName) => {
+const searchCocktailByName = (requestWord) => {
     errorMessage.innerHTML = '';
 
-    const cocktailNameFiltered = cocktailName.trim().split(" ")[0];
+    const requestWordFiltered = requestWord.trim().split(" ")[0];
 
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailNameFiltered}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${requestWordFiltered}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -28,10 +28,11 @@ const searchCocktailByName = (cocktailName) => {
 }
 
 // ищем коктейль по ингредиенту
-const searchCocktailByIngredient = (cocktail) => {
+const searchCocktailByIngredient = (requestWord) => {
     errorMessage.innerHTML = '';
+    const requestWordFiltered = requestWord.trim().split(" ")[0];
 
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktail}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${requestWordFiltered}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -45,10 +46,11 @@ const searchCocktailByIngredient = (cocktail) => {
 }
 
 // ищем ингредиент по названию
-const searchIngredientByName = (ingredientName) => {
+const searchIngredientByName = (requestWord) => {
     errorMessage.innerHTML = '';
+    const requestWordFiltered = requestWord.trim().split(" ")[0];
 
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredientName}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${requestWordFiltered}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -108,7 +110,7 @@ const displayIngredient = (div, data) => {
     }
 
     wrap.className = 'ingredient-card';
-    picture.src = `https://www.thecocktaildb.com/images/ingredients/${searchInput.value}-Medium.png`;
+    picture.src = `https://www.thecocktaildb.com/images/ingredients/${data.ingredients[0].strIngredient}-Medium.png`;
     ingredientName.textContent = data.ingredients[0].strIngredient;
     alcoholic.innerHTML = `<b>Alcoholic:</b> ${data.ingredients[0].strAlcohol}`;
     if (data.ingredients[0].strABV) {
@@ -155,7 +157,7 @@ const displayCocktails = (div, data) => {
                 }
             }
 
-            wrap_card.classList.add('card'); 
+            wrap_card.classList.add('card');
             name_card.textContent = data.drinks[i].strDrink;
             picture_card.src = data.drinks[i].strDrinkThumb;
             alcoholic_card.innerHTML = `<b>Type:</b> ${data.drinks[i].strAlcoholic}`;
@@ -208,31 +210,6 @@ searchButton.addEventListener('click', () => {
     }
 })
 
-// Ильвина конец
-
-// Саша начало
-
-// const displayCocktails = (data) => {
-//     for (let i = 0; i < 5; i++) {
-//         document.getElementById('image').src = data.drinks[i].strDrinkThumb;
-//         document.getElementById("name").innerText = data.drinks[i].strDrink;
-//         document.getElementById("indredients").innerText = "Ingredients: " + data.drinks[i].strIngredient1 + ", " + data.drinks[i].strIngredient2 + ", " + data.drinks[i].strIngredient3 + ", " + data.drinks[i].strIngredient4;
-//         document.getElementById("recipe").innerText = data.drinks[i].strInstructions;
-//         document.getElementById("alcoholic").innerText = "Type: " + data.drinks[i].strAlcoholic;
-//         document.getElementById("glass").innerText = "Glass: " + data.drinks[i].strGlass;
-//         // document.getElementById("recipe").innerText = "Instructions: " + data.drinks[i].strInstructions;
-
-//         let Instruction = data.drinks[0].strInstructions;
-//         let Instrsplit = Instruction.split('.');
-//         console.log(Instrsplit);
-//         for (let i = 0; i < Instrsplit.length; i++) {
-//             document.getElementById("recipe").innerText = "Instructions: " + Instrsplit.join('.' + '\n');
-//         }
-//     }
-// }
-// Саша конец
-
-
 //Пати начало
 // Отрисовка случайного коктейля
 function newRandomCard(event) {
@@ -257,9 +234,12 @@ function newRandomCard(event) {
 document.addEventListener("DOMContentLoaded", newRandomCard())
 
 //Обновление блока случайных коктейлей (пока удается только удалить)
-
 document.querySelector('#update').addEventListener('click', () => {
     newRandomCard()
 })
 
 //Пати конец
+
+
+
+

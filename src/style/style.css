@@ -16,6 +16,10 @@ body {
 
 /* colors */
 /* breakpoints */
+body {
+  background: linear-gradient(0deg, #151313 10%, #282828 50%, #151313 90%);
+}
+
 .main__top-background {
   min-height: 13rem;
   background: url("../images/32000-ffffff.svg") center/70% no-repeat;
@@ -31,6 +35,23 @@ body {
   border-bottom: 1px solid #FFE70D;
 }
 
+@media screen and (min-width: 507px) and (max-width: 1023px) {
+  .main__top-background {
+    min-height: 8rem;
+  }
+}
+@media screen and (min-width: 388px) and (max-width: 506px) {
+  .main__top-background {
+    min-height: 10rem;
+    background: url("../images/picture_mobile.svg") center/25% no-repeat;
+  }
+}
+@media screen and (max-width: 387px) {
+  .main__top-background {
+    min-height: 11rem;
+    background: url("../images/picture_mobile.svg") center/35% no-repeat;
+  }
+}
 .search-form {
   display: flex;
   flex-wrap: wrap;
@@ -72,9 +93,6 @@ body {
 }
 
 @media screen and (min-width: 507px) and (max-width: 1023px) {
-  .main__top-background {
-    min-height: 8rem;
-  }
   .search-form {
     width: 95%;
   }
@@ -89,10 +107,6 @@ body {
   }
 }
 @media screen and (min-width: 388px) and (max-width: 506px) {
-  .main__top-background {
-    min-height: 10rem;
-    background: url("../images/picture_mobile.svg") center/25% no-repeat;
-  }
   .search-form {
     flex-direction: column;
     align-content: center;
@@ -113,10 +127,6 @@ body {
   }
 }
 @media screen and (max-width: 387px) {
-  .main__top-background {
-    min-height: 11rem;
-    background: url("../images/picture_mobile.svg") center/35% no-repeat;
-  }
   .search-form {
     flex-direction: column;
     align-content: center;
@@ -140,7 +150,7 @@ body {
 .flex {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 20px 10px;
 }
@@ -148,7 +158,6 @@ body {
 .card {
   position: relative;
   width: 25%;
-  min-height: 980px;
   padding: 40px;
   margin: 10px;
   overflow: visible;
@@ -262,6 +271,9 @@ img {
   }
   .card-by-ingredient {
     width: 60%;
+  }
+  .ingredient-card {
+    width: 65%;
   }
 }
 ol, ul {
@@ -382,8 +394,4 @@ ol, ul {
 }
 .random-card:hover {
   box-shadow: 0 8px 16px 0 black;
-}
-
-body {
-  background: linear-gradient(0deg, #151313 10%, #282828 50%, #151313 90%);
 }/*# sourceMappingURL=style.css.map */
